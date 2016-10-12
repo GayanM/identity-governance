@@ -23,6 +23,7 @@ import org.wso2.carbon.identity.event.services.IdentityEventService;
 import org.wso2.carbon.identity.governance.IdentityGovernanceService;
 import org.wso2.carbon.user.core.service.RealmService;
 
+import java.lang.String;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +43,15 @@ public class NotificationTaskDataHolder {
     private RealmService realmService;
     private String notificationTriggerTime;
     private String schedulerDelay;
+    private String notificationSendingThreadPoolSize = "5";
+
+    public int getNotificationSendingThreadPoolSize() {
+        return Integer.parseInt(notificationSendingThreadPoolSize);
+    }
+
+    public void setNotificationSendingThreadPoolSize(String notificationSendingThreadPoolSize) {
+        this.notificationSendingThreadPoolSize = notificationSendingThreadPoolSize;
+    }
 
     public Date getNotificationTriggerTime() throws ParseException{
         DateFormat dateFormat = new SimpleDateFormat(NotificationConstants.TRIGGER_TIME_FORMAT);
